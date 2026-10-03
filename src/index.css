@@ -1,0 +1,119 @@
+ @tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  color: #fff7ed;
+  background: #17120f;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(245, 158, 11, 0.12),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 90% 20%,
+      rgba(236, 72, 153, 0.10),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 50% 100%,
+      rgba(34, 197, 94, 0.06),
+      transparent 30%
+    ),
+    #17120f;
+}
+
+/* Warm animated glow */
+#root::before {
+  content: "";
+  position: fixed;
+  width: 450px;
+  height: 450px;
+  top: 8%;
+  left: 5%;
+  border-radius: 50%;
+
+  background: #f59e0b;
+  filter: blur(120px);
+  opacity: 0.16;
+
+  pointer-events: none;
+  z-index: 0;
+
+  animation: warmGlow 10s ease-in-out infinite alternate;
+}
+
+/* Pink animated glow */
+#root::after {
+  content: "";
+  position: fixed;
+  width: 420px;
+  height: 420px;
+  right: 5%;
+  bottom: 8%;
+  border-radius: 50%;
+
+  background: #ec4899;
+  filter: blur(120px);
+  opacity: 0.13;
+
+  pointer-events: none;
+  z-index: 0;
+
+  animation: pinkGlow 12s ease-in-out infinite alternate;
+}
+
+/* Amber movement */
+@keyframes warmGlow {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(220px, 120px) scale(1.15);
+  }
+
+  100% {
+    transform: translate(80px, 280px) scale(0.9);
+  }
+}
+
+/* Pink movement */
+@keyframes pinkGlow {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(-180px, -120px) scale(1.15);
+  }
+
+  100% {
+    transform: translate(-80px, -240px) scale(0.9);
+  }
+}
+
+/* Selection */
+::selection {
+  background: rgba(245, 158, 11, 0.35);
+  color: #ffffff;
+}
