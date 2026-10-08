@@ -1,120 +1,195 @@
+import { useState } from "react";
 import Section from "../components/Section";
 import CodeBlock from "../components/CodeBlock";
 
 export default function RealProject() {
-  const concepts = [
+  const [activePartName, setActivePartName] = useState("Navbar");
+
+  const projectParts = [
     {
-      number: "01",
-      title: "Project Structure",
+      name: "Navbar",
       description:
-        "A real project can be divided into reusable React components.",
+        "A simple navigation bar for moving between pages or sections.",
+      code: `<nav className="flex items-center justify-between px-6 py-4">
+  <h2 className="text-xl font-bold text-white">
+    MyPortfolio
+  </h2>
+
+  <div className="flex gap-5 text-sm text-slate-300">
+    <a href="#">Home</a>
+    <a href="#">Projects</a>
+    <a href="#">Contact</a>
+  </div>
+</nav>`,
     },
+
     {
-      number: "02",
-      title: "Tailwind Styling",
+      name: "Hero",
       description:
-        "Tailwind utility classes can be used directly inside each component.",
+        "The Hero introduces the website and gives visitors a clear first impression.",
+      code: `<section className="px-6 py-20 text-center">
+  <p className="text-cyan-400">
+    Web Developer
+  </p>
+
+  <h1 className="mt-3 text-4xl font-bold text-white">
+    Build. Create. Learn.
+  </h1>
+
+  <button className="mt-6 rounded-lg bg-cyan-500 px-5 py-3 text-white">
+    View Projects
+  </button>
+</section>`,
     },
+
     {
-      number: "03",
-      title: "Responsive Layout",
+      name: "Project Card",
       description:
-        "Responsive classes help the project work on different screen sizes.",
+        "A reusable card can display a project, product, or other content.",
+      code: `function ProjectCard() {
+  return (
+    <div className="rounded-xl bg-white p-5 shadow-lg">
+      <h2 className="text-xl font-bold text-slate-900">
+        My Portfolio
+      </h2>
+
+      <p className="mt-2 text-slate-600">
+        Built with React and Tailwind CSS.
+      </p>
+
+      <button className="mt-4 rounded-lg bg-cyan-500 px-4 py-2 text-white">
+        View Project
+      </button>
+    </div>
+  );
+}`,
     },
+
     {
-      number: "04",
-      title: "Reusable Components",
+      name: "Contact",
       description:
-        "Components such as Navbar, Hero, Cards, and Footer can be reused.",
+        "A contact section gives visitors a way to communicate with the developer.",
+      code: `<section className="rounded-2xl bg-slate-900 p-8 text-center">
+  <h2 className="text-2xl font-bold text-white">
+    Let's Work Together
+  </h2>
+
+  <p className="mt-2 text-slate-400">
+    Have a project in mind?
+  </p>
+
+  <button className="mt-5 rounded-lg bg-cyan-500 px-5 py-3 text-white">
+    Contact Me
+  </button>
+</section>`,
+    },
+
+    {
+      name: "Footer",
+      description:
+        "The Footer contains simple information, links, or copyright text.",
+      code: `<footer className="border-t border-white/10 px-6 py-6 text-center">
+  <p className="text-sm text-slate-400">
+    © 2026 MyPortfolio
+  </p>
+</footer>`,
     },
   ];
 
+  const activePart = projectParts.find((part) => part.name === activePartName);
+
   return (
     <Section
-      number="24"
+      number="23"
       label="Real Project"
-      title="Using Tailwind in a Real Project"
+      title="Tailwind in a Real Project"
     >
-      <p className="mb-8 max-w-3xl text-lg leading-8 text-slate-300">
-        Tailwind CSS can be used in real websites and applications
-        to create responsive layouts, reusable components, and
-        consistent designs.
+      {/* Introduction */}
+      <p className="mb-7 max-w-3xl text-lg leading-8 text-slate-300">
+        In a real project, we combine small reusable components to build a
+        complete website. Tailwind controls the design of each component.
       </p>
 
-      <div className="grid items-stretch gap-5 md:grid-cols-2 lg:grid-cols-4">
-        {concepts.map((concept) => (
-          <div
-            key={concept.number}
-            className="flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.05] p-6"
-          >
-            <span className="text-sm font-bold text-cyan-400">
-              {concept.number}
-            </span>
-
-            <h3 className="mt-4 text-xl font-bold text-white">
-              {concept.title}
-            </h3>
-
-            <p className="mt-3 leading-7 text-slate-400">
-              {concept.description}
-            </p>
-          </div>
-        ))}
-      </div>
-
-      <div className="mt-8">
-        <h3 className="mb-4 text-xl font-bold text-white">
-          Real Project Example
+      {/* Project Flow */}
+      <div className="mb-7 rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+        <h3 className="mb-4 text-lg font-bold text-white">
+          Example: Portfolio Website
         </h3>
 
-        <CodeBlock>{`function Card() {
-  return (
-    <div className="rounded-xl bg-white p-6 shadow-lg">
-      <h2 className="text-xl font-bold text-gray-900">
-        My Project
-      </h2>
-
-      <p className="mt-2 text-gray-600">
-        Built with React and Tailwind CSS.
-      </p>
-    </div>
-  );
-}`}</CodeBlock>
-
-        <p className="mt-4 leading-7 text-slate-400">
-          This example shows how a reusable React component can
-          be styled with Tailwind utility classes.
-        </p>
-      </div>
-
-      <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.04] p-6">
-        <h3 className="mb-4 text-xl font-bold text-white">
-          Typical Project Components
-        </h3>
-
-        <div className="flex flex-wrap gap-3">
-          {["Navbar", "Hero", "Cards", "Sections", "Footer"].map(
-            (item) => (
-              <span
-                key={item}
-                className="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-sm font-medium text-cyan-300"
+        <div className="flex flex-wrap items-center gap-2">
+          {projectParts.map((part, index) => (
+            <div key={part.name} className="flex items-center gap-2">
+              <button
+                onClick={() => setActivePartName(part.name)}
+                className={`rounded-lg px-4 py-2 text-sm font-medium transition ${
+                  activePartName === part.name
+                    ? "bg-cyan-500 text-white"
+                    : "bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white"
+                }`}
               >
-                {item}
-              </span>
-            )
-          )}
+                {part.name}
+              </button>
+
+              {index < projectParts.length - 1 && (
+                <span className="text-slate-600">→</span>
+              )}
+            </div>
+          ))}
         </div>
       </div>
 
-      <div className="mt-6 rounded-2xl border border-cyan-400/20 bg-cyan-400/5 p-6">
-        <h3 className="mb-3 text-lg font-bold text-cyan-300">
-          Key Takeaway
-        </h3>
+      {/* Selected Part */}
+      <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/5 p-6">
+        <div className="mb-5">
+          <span className="text-sm font-semibold text-cyan-400">
+            Selected Part
+          </span>
+
+          <h3 className="mt-1 text-2xl font-bold text-white">
+            {activePart.name}
+          </h3>
+
+          <p className="mt-2 leading-7 text-slate-400">
+            {activePart.description}
+          </p>
+        </div>
+
+        <CodeBlock>{activePart.code}</CodeBlock>
+      </div>
+
+      {/* Mental Model */}
+      <div className="mt-7 rounded-2xl border border-white/10 bg-white/[0.04] p-6">
+        <h3 className="mb-4 text-lg font-bold text-white">Keep This in Mind</h3>
+
+        <div className="grid gap-3 md:grid-cols-3">
+          <div className="rounded-xl bg-cyan-400/10 p-4 text-center">
+            <p className="font-bold text-cyan-300">React</p>
+
+            <p className="mt-1 text-sm text-slate-400">Builds components</p>
+          </div>
+
+          <div className="rounded-xl bg-purple-400/10 p-4 text-center">
+            <p className="font-bold text-purple-300">Tailwind</p>
+
+            <p className="mt-1 text-sm text-slate-400">Styles components</p>
+          </div>
+
+          <div className="rounded-xl bg-emerald-400/10 p-4 text-center">
+            <p className="font-bold text-emerald-300">Real Project</p>
+
+            <p className="mt-1 text-sm text-slate-400">Combines everything</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Key Takeaway */}
+      <div className="mt-6 rounded-2xl border border-cyan-400/20 bg-cyan-400/5 p-5">
+        <h3 className="mb-2 text-lg font-bold text-cyan-300">Key Takeaway</h3>
 
         <p className="leading-7 text-slate-300">
-          In a real project, Tailwind CSS can be combined with
-          React components to create clean, responsive, and
-          reusable user interfaces.
+          A real Tailwind project is built from reusable components. Each
+          component can use Tailwind classes for layout, spacing, colors, and
+          responsive design.
         </p>
       </div>
     </Section>

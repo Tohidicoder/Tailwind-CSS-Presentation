@@ -74,7 +74,7 @@
 //         <TailwindVsBootstrap />
 //         <AdvantagesLimitations />
 
-//         {/*         
+//         {/*
 //         <ReactWithTailwind />
 //         <RealProject />  */}
 //         {/* <Mistakes />
@@ -86,7 +86,6 @@
 //   );
 // }
 
-
 import Header from "./components/Header";
 
 import Introduction from "./slides/Introduction";
@@ -95,13 +94,14 @@ import WhyTailwind from "./slides/WhyTailwind";
 import TailwindVsCss from "./slides/TailwindVsCss";
 import GettingStarted from "./slides/GettingStarted";
 
-import UtilityClasses from "./slides/UtilityClasses";
+import UtilityClasses from "./slides/ClassStructure";
 import Layout from "./slides/Layout";
 import FlexGrid from "./slides/FlexGrid";
 import SpacingSizing from "./slides/SpacingSizing";
 import Typography from "./slides/Typography";
 import Colors from "./slides/Colors";
-import BackgroundsBorders from "./slides/BackgroundsBorder";
+// import BackgroundsBorder from "BackgroundsBorder";
+import BackgroundsBorder from "./slides/BackgroundsBorder";
 import Effects from "./slides/Effects";
 import TransitionsAnimation from "./slides/TransitionsAnimation";
 import Interactivity from "./slides/Interactivity";
@@ -129,13 +129,20 @@ import AdvancedCustomization from "./slides/AdvancedCustomization";
 import Conclusion from "./slides/Conclusion";
 import Preflight from "./slides/Preflight";
 import Tables from "./slides/Tables";
+import ClassStructure from "./slides/ClassStructure";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#07111f]">
+    // <div className="min-h-screen bg-[#07111f]">
+    //   <Header />
+
+    //   <main className="mx-auto max-w-6xl px-6 md:px-10">
+
+    <div className="min-h-screen">
       <Header />
 
       <main className="mx-auto max-w-6xl px-6 md:px-10">
+        {/* Your sections */}
 
         {/* 01 — Introduction */}
         <Introduction />
@@ -153,7 +160,7 @@ export default function App() {
         <GettingStarted />
 
         {/* 06 — Utility Classes */}
-        <UtilityClasses />
+        <ClassStructure />
 
         {/* 07 — Layout */}
         <Layout />
@@ -171,9 +178,10 @@ export default function App() {
         <Colors />
 
         {/* 12 — Backgrounds & Borders */}
-        <BackgroundsBorders />
+        {/* <BackgroundsBorders /> */}
+        <BackgroundsBorder />
 
-        {/* 13 — Effects */}
+        {/* 13 — Effects  */}
         <Effects />
 
         {/* 14 — Transitions & Animation */}
@@ -228,8 +236,6 @@ export default function App() {
         <Tables />
 
         <Conclusion />
-
-
       </main>
     </div>
   );

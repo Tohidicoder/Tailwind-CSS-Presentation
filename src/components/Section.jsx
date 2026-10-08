@@ -1,4 +1,3 @@
-
 export default function Section({ number, label, title, children }) {
   return (
     <section className="min-h-[70vh] border-b border-fuchsia-400/10 py-20 md:py-28">
